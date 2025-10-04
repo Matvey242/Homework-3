@@ -1,0 +1,69 @@
+.container {
+    width: 140%;
+    height: 10%;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    gap: 120px;
+}
+
+.light {
+    font-size: 25px;
+}
+
+.dark {
+    font-size: 25px;
+}
+
+.blue {
+    font-size: 25px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: blue;
+}
+
+.Themes {
+    width: 20%;
+    height: 70%;
+    display: flex;
+}
+
+.settingBlock {
+    opacity: 0;
+    transition: 0.2s all;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: var(--bg-color-secondary);
+}
+
+.settingBlock.active {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.setting {
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.2s all;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.setting.active {
+    transform: rotate(90deg);
+}
+
+.setting:hover {
+    color: gray;
+}
+
+

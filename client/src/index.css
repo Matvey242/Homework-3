@@ -1,0 +1,42 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Cascadia Code;
+}
+
+:root {
+	--bg-color-primary: #ffffff;
+	--bg-color-secondary: #f5f5f5;
+	--text-color: #333333;
+}
+
+body.dark {
+	--bg-color-primary: #333333;
+	--bg-color-secondary: #555555;
+	--text-color: #ffffff;
+}
+
+body.blue {
+	--bg-color-primary: #311e94;
+	--bg-color-secondary: #2f7a8f;
+	--text-color: #7b91a0;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+#root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+body {
+	background-color: var(--bg-color-primary);
+	color: var(--text-color);
+	transition: background-color 0.3s, color 0.3s, border 0.3s;
+}
