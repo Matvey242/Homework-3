@@ -1,43 +1,44 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import notesStore from '../store/zustandStore.js'
 
-const useNotes = (initialNotes = []) => {
-	const [notes, setNotes] = useState(initialNotes)
+const useNotes = () => {
+	const notes = notesStore(state => state.notes)
+    const AddNote = notesStore(state => state.AddNote)
+	const upSeacrh = notesStore(state => state.upSeacrh)
+	const downSeacrh = notesStore(state => state.downSeacrh)
+	const DeleteNote = notesStore(state => state.DeleteNote)
+	const rSearch = notesStore(state => state.rSearch)
+	const fetchNotes = notesStore(state => state.fetchNotes)
 
 	useEffect(() => {
-		const getTasks = async () => {
-			const result = await axios.get('http://localhost:3000/tasks/getTask')
-			setNotes(result.data)
-		}
-		getTasks()
-	}, [])
+    fetchNotes()
+    }, [])
 
 	const addNote = text => {
 		const note = {
 			text: text
 		}
-		setNotes(prevNotes => [...prevNotes, note])
+		AddNote(note)
 		return note
 	}
 
 	const deleteNote = _id => {
-		setNotes(prevNotes => prevNotes.filter(note => note._id !== _id))
+		DeleteNote(_id)
 	}
 
   const up = () => {
-    const sorted = [...notes].sort((a, b) => a.text.localeCompare(b.text))
-    setNotes(sorted)
+	upSeacrh()
   }
 
   const down = () => {
-    const sorted = [...notes].sort((a, b) => b.text.localeCompare(a.text))
-    setNotes(sorted)
+	downSeacrh()
   }
 
-  const randomSearch = () => {
-	const sorted = [...notes].sort(() => Math.random() - 0.5)
-	setNotes(sorted)
+    const randomSearch = () => {
+		rSearch()
   }
+
 
 	return {
 		notes,
